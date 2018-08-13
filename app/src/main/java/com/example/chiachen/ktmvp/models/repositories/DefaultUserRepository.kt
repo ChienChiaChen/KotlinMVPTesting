@@ -19,12 +19,13 @@ class DefaultUserRepository(private val userService: UserService,
     private val LAST_UPDATE_KEY = "last_update_page_"
 
     override fun getUsers(page: Int, forced: Boolean): Single<UserListModel> {
-        return Single.create<UserListModel> { emitter: SingleEmitter<UserListModel> ->
-            if (shouldUpdate(page, forced)) {
-                loadUserFromNetwork(page, emitter)
-            } else {
-                loadOfflineUsers(page, emitter)
-            }
+        return Single.create<UserListModel> {
+            emitter: SingleEmitter<UserListModel> ->
+                if (shouldUpdate(page, forced)) {
+                    loadUserFromNetwork(page, emitter)
+                } else {
+                    loadOfflineUsers(page, emitter)
+                }
         }
     }
 

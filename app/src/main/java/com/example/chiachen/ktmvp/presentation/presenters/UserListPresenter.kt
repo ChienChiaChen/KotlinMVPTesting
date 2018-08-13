@@ -39,10 +39,12 @@ class UserListPresenter(val getUsers: GetUsers,
         if (forced) {
             page = 1
         }
+
         if (page == 1) {
             view?.clearList()
             view?.hideEmptyListError()
         }
+
         view?.addUsersToList(users)
         view?.hideLoading()
         page++
