@@ -48,4 +48,15 @@ class UserListPresenter(val getUsers: GetUsers,
         page++
     }
 
+    fun onScrollChanged(lastVisibleItemPosition: Int, totalItemCount: Int) {
+        val shouldGetNextPage = !loading && lastVisibleItemPosition >= totalItemCount - offset
+        if (shouldGetNextPage) {
+            getUsers()
+        }
+
+        if (loading && lastVisibleItemPosition >= totalItemCount) {
+            view?.showLoading()
+        }
+    }
+
 }
