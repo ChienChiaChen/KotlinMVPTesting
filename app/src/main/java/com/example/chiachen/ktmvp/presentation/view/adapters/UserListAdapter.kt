@@ -16,8 +16,19 @@ class UserListAdapter(private val users: MutableList<UserViewModel>,
                       private val listener: (UserViewModel) -> Unit) : RecyclerView.Adapter<UserListAdapter.UserViewHolder>() {
 
     override fun getItemCount() = users.size
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = UserViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_user, parent, false))
+
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) = holder.bind(users[position], listener)
+
+    fun clearUsers() {
+        users.clear()
+    }
+
+    fun addUsers(newUsers: List<UserViewModel>) {
+        users.addAll(newUsers)
+        notifyDataSetChanged()
+    }
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
