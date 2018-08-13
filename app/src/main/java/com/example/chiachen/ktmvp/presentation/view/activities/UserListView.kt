@@ -1,5 +1,7 @@
 package com.example.chiachen.ktmvp.presentation.view.activities
 
+import com.example.chiachen.ktmvp.presentation.view.viewmodels.UserViewModel
+
 interface UserListView {
     fun showLoading()
     fun hideLoading()
@@ -7,4 +9,5 @@ interface UserListView {
     fun hideEmptyListError()
     fun showToastError()
     fun clearList()
+    fun addUsersToList(users: List<UserViewModel>)
 }
