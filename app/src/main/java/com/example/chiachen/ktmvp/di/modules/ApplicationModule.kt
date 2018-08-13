@@ -8,9 +8,7 @@ import com.example.chiachen.ktmvp.models.persistence.daos.UserDao
 import com.example.chiachen.ktmvp.models.repositories.DefaultUserRepository
 import com.example.chiachen.ktmvp.models.repositories.UserRepository
 import com.example.chiachen.ktmvp.models.services.UserService
-import com.example.chiachen.ktmvp.utils.CalendarWrapper
-import com.example.chiachen.ktmvp.utils.ConnectionHelper
-import com.example.chiachen.ktmvp.utils.PreferencesHelper
+import com.example.chiachen.ktmvp.utils.*
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -72,4 +70,8 @@ class ApplicationModule(val application: MyApp) {
     @Provides
     @Singleton
     fun providePreferences(context: Context) = PreferencesHelper(context)
+
+    @Provides
+    @Singleton
+    fun provideSchedulerProvider() : SchedulerProvider = AppSchedulerProvider()
 }
