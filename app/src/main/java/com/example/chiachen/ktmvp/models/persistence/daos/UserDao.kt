@@ -8,10 +8,9 @@ import com.example.chiachen.ktmvp.models.entities.User
 
 @Dao
 interface UserDao {
-
-    @Query("select * from user order by reputation desc limit (:arg0 - 1) * 30, 30")
+    @Query("SELECT * FROM user ORDER BY reputation DESC LIMIT (:page - 1) * 30, 30")
     fun getUsers(page: Int): List<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(users :List<User>)
+    fun insertAll(users: List<User>)
 }
