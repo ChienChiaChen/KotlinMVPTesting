@@ -10,6 +10,4 @@ data class User(
         @SerializedName("display_name") var displayName: String,
         @SerializedName("reputation") var reputation: Long,
         @SerializedName("profile_image") var profileImage: String) {
-
-    constructor() : this(-1, "", 0, "")
 }
