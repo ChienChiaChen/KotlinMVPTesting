@@ -14,6 +14,7 @@ class MyApp : Application() {
         initAppComponent()
         Stetho.initializeWithDefaults(this)
         component.inject(this)
+        initStetho()
     }
 
     private fun initAppComponent() {
@@ -21,5 +22,13 @@ class MyApp : Application() {
                 .builder()
                 .applicationModule(ApplicationModule(this))
                 .build()
+    }
+
+    private fun initStetho() {
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                        .build())
     }
 }
